@@ -15,6 +15,7 @@
 		992EA0C923AA051E00588D94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 992EA0C723AA051E00588D94 /* LaunchScreen.storyboard */; };
 		992EA0D423AA051E00588D94 /* TipCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992EA0D323AA051E00588D94 /* TipCalculatorTests.swift */; };
 		992EA0DF23AA051E00588D94 /* TipCalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992EA0DE23AA051E00588D94 /* TipCalculatorUITests.swift */; };
+		99A8A7E0250E153600FB86BF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A8A7DF250E153600FB86BF /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		992EA0DA23AA051E00588D94 /* TipCalculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipCalculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		992EA0DE23AA051E00588D94 /* TipCalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCalculatorUITests.swift; sourceTree = "<group>"; };
 		992EA0E023AA051E00588D94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99A8A7DF250E153600FB86BF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				992EA0C523AA051E00588D94 /* Assets.xcassets */,
 				992EA0C723AA051E00588D94 /* LaunchScreen.storyboard */,
 				992EA0CA23AA051E00588D94 /* Info.plist */,
+				99A8A7DF250E153600FB86BF /* SettingsViewController.swift */,
 			);
 			path = TipCalculator;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				992EA0C123AA051D00588D94 /* ViewController.swift in Sources */,
 				992EA0BD23AA051D00588D94 /* AppDelegate.swift in Sources */,
 				992EA0BF23AA051D00588D94 /* SceneDelegate.swift in Sources */,
+				99A8A7E0250E153600FB86BF /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,10 +18,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
     }
 
     @IBAction func onTap(_ sender: Any) {
-        print("Hello")
+        print("tapped")
         view.endEditing(true)
     }
     
@@ -36,6 +37,41 @@ class ViewController: UIViewController {
         //update the tip and total label
         tipLabel.text = String(format:"$%.2f",tip)
         totalLabel.text = String(format:"$%.2f",total)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("view will appear")
+        
+        // retrive new default value
+        let defaults = UserDefaults.standard
+        // get an integer value
+               // force userdefaults to save
+//        defaults.synchronize()
+//        if let defValue = defaults.value(forKey: "defaultTipAmount") {
+//            let selectedIndex = defValue
+//            tipAmount.selectedSegmentIndex = selectedIndex as! Int
+//        }
+        let defaultValue = defaults.value(forKey: "defaultTipAmount")
+        let selectedIndex = defaultValue
+        tipAmount.selectedSegmentIndex = selectedIndex as? Int ?? 0
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("view did appear")
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("view will disappear")
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("view did disappear")
     }
 }
 
