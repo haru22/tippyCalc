@@ -1,8 +1,8 @@
 version: "Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)"
-options: "62c8e03b5c65eef3c4ab2d68ba50c945"
-build_time: [1599999275, 953249000]
+options: "cd294f5727d270fbf5fb57647ed9d07f"
+build_time: [1600967744, 953223000]
 inputs:
-  "/Users/haruna/Documents/iOSdev/TipCalculator/TipCalculator/ViewController.swift": [1599999275, 894269298]
+  "/Users/haruna/Documents/iOSdev/TipCalculator/TipCalculator/ViewController.swift": [1600967744, 796840858]
   "/Users/haruna/Documents/iOSdev/TipCalculator/TipCalculator/AppDelegate.swift": [1576652189, 419163306]
   "/Users/haruna/Documents/iOSdev/TipCalculator/TipCalculator/SceneDelegate.swift": [1576652189, 421780481]
-  "/Users/haruna/Documents/iOSdev/TipCalculator/TipCalculator/SettingsViewController.swift": [1599998422, 536326188]
+  "/Users/haruna/Documents/iOSdev/TipCalculator/TipCalculator/SettingsViewController.swift": [1600967744, 851553756]

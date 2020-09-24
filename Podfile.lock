@@ -1,0 +1,18 @@
+PODS:
+  - tealium-swift/Core (2.0.0)
+  - tealium-swift/Lifecycle (2.0.0):
+    - tealium-swift/Core
+
+DEPENDENCIES:
+  - tealium-swift/Lifecycle
+
+SPEC REPOS:
+  trunk:
+    - tealium-swift
+
+SPEC CHECKSUMS:
+  tealium-swift: c0b58cc749d23805790de1472407723fa41da2dc
+
+PODFILE CHECKSUM: 777144c165151e93fa6cd5eeb8d5493c292a1069
+
+COCOAPODS: 1.8.4

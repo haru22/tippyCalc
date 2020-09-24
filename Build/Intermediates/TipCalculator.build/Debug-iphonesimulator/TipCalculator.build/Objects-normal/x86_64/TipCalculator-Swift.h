@@ -232,27 +232,36 @@ SWIFT_CLASS("_TtC13TipCalculator13SceneDelegate")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class UILabel;
+@class UISwitch;
 @class UISegmentedControl;
 @class NSBundle;
 @class NSCoder;
 
 SWIFT_CLASS("_TtC13TipCalculator22SettingsViewController")
 @interface SettingsViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified defaultLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified darkLabel;
+@property (nonatomic, weak) IBOutlet UISwitch * _Null_unspecified outletSwitch;
 @property (nonatomic, weak) IBOutlet UISegmentedControl * _Null_unspecified defaultSetting;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
 - (IBAction)setDefaultValue:(id _Nonnull)sender;
+- (IBAction)saveSwitchState:(UISwitch * _Nonnull)sender;
+- (IBAction)switchToDark:(id _Nonnull)sender;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class UITextField;
-@class UILabel;
 
 SWIFT_CLASS("_TtC13TipCalculator14ViewController")
 @interface ViewController : UIViewController
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified tipLabel2;
 @property (nonatomic, weak) IBOutlet UITextField * _Null_unspecified billField;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified tipLabel;
 @property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified totalLabel;
+@property (nonatomic, weak) IBOutlet UILabel * _Null_unspecified billAmountLabel;
 @property (nonatomic, weak) IBOutlet UISegmentedControl * _Null_unspecified tipAmount;
 - (void)viewDidLoad;
 - (IBAction)onTap:(id _Nonnull)sender;

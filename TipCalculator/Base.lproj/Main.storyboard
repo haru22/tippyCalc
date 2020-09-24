@@ -44,9 +44,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXC-v0-SpJ">
-                                <rect key="frame" x="231" y="282" width="119" height="21"/>
+                                <rect key="frame" x="151" y="255" width="199" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="55"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -92,9 +92,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="billAmountLabel" destination="KJc-wS-YhD" id="jTl-eq-IsD"/>
                         <outlet property="billField" destination="Vst-9C-OEa" id="iwQ-H2-xX4"/>
                         <outlet property="tipAmount" destination="cX6-dw-mK6" id="T8c-uq-xVc"/>
                         <outlet property="tipLabel" destination="LXC-v0-SpJ" id="43o-sh-jdD"/>
+                        <outlet property="tipLabel2" destination="I0w-zd-Mpa" id="5Cd-TT-hCy"/>
                         <outlet property="totalLabel" destination="IfP-jS-UG3" id="26N-2F-LpA"/>
                     </connections>
                 </viewController>
@@ -134,13 +136,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yHK-6T-Ctv">
+                                <rect key="frame" x="281" y="247" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="saveSwitchState:" destination="nE1-1d-wxI" eventType="valueChanged" id="TQa-im-ohU"/>
+                                    <action selector="switchToDark:" destination="nE1-1d-wxI" eventType="valueChanged" id="BDO-Lh-Xtx"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLp-7b-i38">
+                                <rect key="frame" x="60" y="247" width="84" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="fkq-vO-q4o"/>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="PGi-dp-Ehl"/>
                     <connections>
+                        <outlet property="darkLabel" destination="fLp-7b-i38" id="uYe-Tr-DOS"/>
+                        <outlet property="defaultLabel" destination="YUJ-AX-M5h" id="GIm-qG-cgN"/>
                         <outlet property="defaultSetting" destination="kan-bo-7il" id="ll9-bf-7pQ"/>
+                        <outlet property="outletSwitch" destination="yHK-6T-Ctv" id="8FU-K9-aKV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Aj-QD-DUU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
