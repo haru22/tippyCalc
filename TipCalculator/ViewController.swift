@@ -25,8 +25,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-
+        self.billField.becomeFirstResponder()
+        // show keyboard permanently
         
         // slide bar animation
 //        animator.addAnimations {
@@ -70,8 +70,11 @@ class ViewController: UIViewController {
         let tip =  bill * tipPercentage[tipAmount.selectedSegmentIndex]
         let total = bill + tip
         //update the tip and total label
-        tipLabel.text = String(format:"$%.2f",tip)
-        totalLabel.text = String(format:"$%.2f",total)
+//        let tip1 = Double(format:"$%.2f",tip)
+//        totipLabel1.text = String(format:"$%.2f",tip)
+//        totalLabel.text = String(format:"$%.2f",total)
+        tipLabel.text = convertDoubleToCurrency(amount: tip)
+        totalLabel.text = convertDoubleToCurrency(amount: total)
     }
     
 
@@ -114,19 +117,37 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("view did appear")
+        
         
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        print("view will disappear")
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("view did disappear")
     }
+    
+    func convertCurrencyToDouble(input: String) -> Double {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .currency
+        numberFormatter.locale = Locale.current
+        return numberFormatter.number(from: input)!.doubleValue
+    }
+    
+    func convertDoubleToCurrency(amount: Double) -> String {
+          
+          let numberFormatter = NumberFormatter()
+          numberFormatter.numberStyle = .currency
+          numberFormatter.locale = Locale.current
+          
+          
+        return numberFormatter.string(from: NSNumber(value: amount))!
+          
+      }
+      
     
     // Defaults = DIctionary[:]
     
