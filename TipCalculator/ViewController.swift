@@ -80,6 +80,7 @@ class ViewController: UIViewController {
 //        tipAmount.selectedSegmentIndex = selectedIndex as? Int ?? 0
         tipPercentageSlider.value = selectedTipPercentage as! Float
         percentageLabel.text = String(format: "%.2f%%", Double(tipPercentageSlider.value))
+        calculateTip((Any).self)
         
         // back ground color switch
         let bgDefault = UserDefaults.standard
@@ -139,7 +140,9 @@ class ViewController: UIViewController {
         print("This is num of people" ,numOfPeople)
         let splittedValue = total / numOfPeople
         print(splittedValue)
-        splittedValueLabel.text = String(format:"$%.2f",splittedValue)
+        splittedValueLabel.text = convertDoubleToCurrency(amount: splittedValue)
+
+//        splittedValueLabel.text = String(format:"$%.2f",splittedValue)
     }
 
     // Defaults = DIctionary[:]
