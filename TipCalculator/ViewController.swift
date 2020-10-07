@@ -13,51 +13,29 @@ class ViewController: UIViewController {
     
     // slide bar
     let animator = UIViewPropertyAnimator(duration: 1, curve: .linear, animations: nil)
-
+    var total = 0.0;
     @IBOutlet weak var tipLabel2: UILabel!
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
-    @IBOutlet weak var billAmountLabel: UILabel!
     
-    @IBOutlet weak var tipAmount: UISegmentedControl!
+    @IBOutlet weak var splittedValueLabel: UILabel!
+    @IBOutlet weak var splitLabel: UILabel!
+    @IBOutlet weak var percentageLabel: UILabel!
     
+    @IBOutlet weak var tipPercentageSlider: UISlider!
+    @IBOutlet weak var splitField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.billField.becomeFirstResponder()
-        // show keyboard permanently
+        overrideUserInterfaceStyle = .light
         
-        // slide bar animation
-//        animator.addAnimations {
-//            self.view.backgroundColor = .cyan
-//        }
-//        let slider = UISlider()
-//        slider.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(slider)
-//        slider.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        slider.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -100).isActive = true
-//        slider.widthAnchor.constraint(equalToConstant: view.frame.width-150).isActive = true
-//
-//        slider.addTarget(self, action: #selector(self.handleSliderChanged(slide:)), for: .allEvents)
-//
-//        let viewToAnimate = UIView()
-//
-//
-//        UIView.animate(withDuration: 1) {
-//            viewToAnimate.alpha = 0
-//        }
+ 
     }
-    
-    // slide bar background change
-//    @objc fileprivate func handleSliderChanged(slide: UISlider) {
-//        print(slide.value)
-//        animator.fractionComplete = CGFloat(slide.value)
-//
-//    }
+
 
     @IBAction func onTap(_ sender: Any) {
-        print("tapped")
         view.endEditing(true)
     }
     
@@ -66,13 +44,23 @@ class ViewController: UIViewController {
         //get the bill amount
         let bill = Double(billField.text!) ?? 0
         //calculate the tip total
+        
+        /* when you use segmented control to get tip amount
         let tipPercentage = [0.15, 0.18, 0.2]
         let tip =  bill * tipPercentage[tipAmount.selectedSegmentIndex]
-        let total = bill + tip
+        */
+        
+        /*use slide bar to get tip amount*/
+        let tip = bill * Double(tipPercentageSlider.value / 100.0)
+        total = bill + tip
         //update the tip and total label
+        
+        
 //        let tip1 = Double(format:"$%.2f",tip)
 //        totipLabel1.text = String(format:"$%.2f",tip)
 //        totalLabel.text = String(format:"$%.2f",total)
+        
+        // apply current currency setting
         tipLabel.text = convertDoubleToCurrency(amount: tip)
         totalLabel.text = convertDoubleToCurrency(amount: total)
     }
@@ -82,34 +70,26 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("view will appear")
         
         // retrive new default value
         let defaults = UserDefaults.standard
 
         let defaultValue = defaults.value(forKey: "defaultTipAmount")
-        let selectedIndex = defaultValue
-        tipAmount.selectedSegmentIndex = selectedIndex as? Int ?? 0
+        let selectedTipPercentage = defaultValue
+//        let selectedIndex = defaultValue
+//        tipAmount.selectedSegmentIndex = selectedIndex as? Int ?? 0
+        tipPercentageSlider.value = selectedTipPercentage as! Float
+        percentageLabel.text = String(format: "%.2f%%", Double(tipPercentageSlider.value))
         
         // back ground color switch
         let bgDefault = UserDefaults.standard
         var darkModeSwitchIsOn = false
         darkModeSwitchIsOn = bgDefault.bool(forKey: "darkModeSwitch")
         if darkModeSwitchIsOn {
-            self.view.backgroundColor = UIColor.black
-            tipLabel.textColor = UIColor.white
-            totalLabel.textColor = UIColor.white
-            billAmountLabel.textColor = UIColor.white
-            tipLabel2.textColor = UIColor.white
-            print("dark mode view controller")
+             overrideUserInterfaceStyle = .dark
             
         } else {
-            self.view.backgroundColor = .white
-            tipLabel.textColor = UIColor.black
-            totalLabel.textColor = UIColor.black
-            billAmountLabel.textColor = UIColor.black
-            tipLabel2.textColor = UIColor.black
-            print("light mode viewController")
+             overrideUserInterfaceStyle = .light
         }
         
     }
@@ -127,7 +107,6 @@ class ViewController: UIViewController {
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("view did disappear")
     }
     
     func convertCurrencyToDouble(input: String) -> Double {
@@ -148,7 +127,21 @@ class ViewController: UIViewController {
           
       }
       
+    @IBAction func SliderAction(_ sender: Any) {
+        percentageLabel.text = String(format: "%.2f%%", Double(tipPercentageSlider.value))
+        calculateTip((Any).self)
+    }
     
+    @IBAction func splitBill(_ sender: Any) {
+        //        let total = Double(totalLabel.text!) ?? 0
+        print("This is total" ,total)
+        let numOfPeople = Double(splitField.text!) ?? 0
+        print("This is num of people" ,numOfPeople)
+        let splittedValue = total / numOfPeople
+        print(splittedValue)
+        splittedValueLabel.text = String(format:"$%.2f",splittedValue)
+    }
+
     // Defaults = DIctionary[:]
     
 //

@@ -16,7 +16,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var darkLabel: UILabel!
     @IBOutlet weak var outletSwitch: UISwitch!
     
-    @IBOutlet weak var defaultSetting: UISegmentedControl!
+    @IBOutlet weak var tipPercentageSlider: UISlider!
+    @IBOutlet weak var tipPercentageLabel: UILabel!
     
     var firstTimeAppLaunch: Bool {
         get {
@@ -42,11 +43,11 @@ class SettingsViewController: UIViewController {
         outletSwitch.isOn = defaults.bool(forKey: "mySwitchValue")
         switchToDark(UISwitch.self)
     }
-    
-    @IBAction func setDefaultValue(_ sender: Any) {
-        defaults.set(defaultSetting.selectedSegmentIndex, forKey: "defaultTipAmount")
+    @IBAction func defaultPercentageChanged(_ sender: Any) {
+        defaults.set(tipPercentageSlider.value, forKey: "defaultTipAmount")
+        print(tipPercentageSlider.value)
         defaults.synchronize()
-        print("default value selected")
+        tipPercentageLabel.text = String(format: "%.2f%%", Double(tipPercentageSlider.value))
     }
     
   
@@ -56,23 +57,17 @@ class SettingsViewController: UIViewController {
     
     @IBAction func switchToDark(_ sender: Any) {
         if outletSwitch.isOn == true {
-            view.backgroundColor = UIColor.black
-            defaultLabel.textColor = UIColor.white
-            darkLabel.textColor = UIColor.white
+             overrideUserInterfaceStyle = .dark
             //9.24 set default bg color
         
             let darkModeSwitch = "darkModeSwitch"
             defaults.set(true, forKey: darkModeSwitch)
             defaults.synchronize()
-            print("switch to dark mode")
             
         } else {
             defaults.set(false,forKey: "darkModeSwitch" )
             defaults.synchronize()
-            view.backgroundColor = UIColor.white
-            defaultLabel.textColor = UIColor.black
-            darkLabel.textColor = UIColor.black
-            print("light mode")
+             overrideUserInterfaceStyle = .light
         }
     }
     
